@@ -1,0 +1,64 @@
+{
+  "name": "sequence-transactor",
+  "version": "3.0.0",
+  "description": "Track client-side transactional changes to data — undo/redo, edge dedup, superimpose, and batched saves. Typed and immutable.",
+  "type": "module",
+  "license": "BSD-3-Clause",
+  "author": "Daniel Cassil",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcassil/transactor.git"
+  },
+  "homepage": "https://github.com/dcassil/transactor#readme",
+  "bugs": {
+    "url": "https://github.com/dcassil/transactor/issues"
+  },
+  "keywords": [
+    "transaction",
+    "undo",
+    "redo",
+    "sequence",
+    "immutable",
+    "typescript"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "depcruise": "depcruise src",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "@vitest/coverage-v8": "^2.1.9",
+    "dependency-cruiser": "^16.10.0",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.21.0",
+    "vitest": "^2.1.9"
+  }
+}
