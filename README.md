@@ -1,7 +1,7 @@
-# sequence-transactor
+# transactor-ts
 
 ![CI](https://github.com/dcassil/transactor/actions/workflows/ci.yml/badge.svg)
-![npm](https://img.shields.io/npm/v/sequence-transactor.svg)
+![npm](https://img.shields.io/npm/v/transactor-ts.svg)
 ![license](https://img.shields.io/badge/license-BSD--3--Clause-blue.svg)
 ![types](https://img.shields.io/badge/types-TypeScript-blue.svg)
 
@@ -12,12 +12,12 @@ dependencies.
 ## Install
 
 ```bash
-npm i sequence-transactor
+npm i transactor-ts
 ```
 
 ## What & why
 
-`sequence-transactor` records an ordered sequence of local changes ("transactions")
+`transactor-ts` records an ordered sequence of local changes ("transactions")
 against sets of data, so you can operate on them individually or as a whole. Build
 up a batch of edits in the UI, undo/redo through them, superimpose them onto data
 you already have, then flush them to your backend in one or many calls. Each
@@ -30,7 +30,7 @@ between _saveable_ and _non-saveable_ transactions.
 ## Quick start
 
 ```ts
-import { create } from 'sequence-transactor';
+import { create } from 'transactor-ts';
 
 interface User {
   id: number;
@@ -143,16 +143,20 @@ was not supplied, a clear error is thrown.
   the latest transaction per id, with two nuances: **add-then-update** stays an
   `add`, and **add-then-delete** cancels out entirely.
 
-## Migration: v2 → v3
+## Lineage & migration (from `sequence-transactor`)
 
-v3 is a first-class TypeScript rewrite. The public API is compatible with v2 — the
-same `create`/`init`/`Transactor`, the same methods and option semantics — now with
-generics over your data type, bundled type declarations, and ESM output.
+`transactor-ts` is the first-class TypeScript successor to the original
+[`sequence-transactor`](https://www.npmjs.com/package/sequence-transactor) (last
+published as `2.1.2`). The public API is unchanged — the same
+`create`/`init`/`Transactor`, the same methods and option semantics — now with
+generics over your data type, bundled type declarations, ESM output, strict typing,
+and full test coverage. To migrate, install `transactor-ts` and update the import
+specifier; no code changes are required.
 
-Behavioural fix in v3: `superimpose` no longer corrupts data when a `delete`
-transaction targets an id that is not present in the client data (v2 removed the
-wrong element). Internals are now immutable — stored arrays and caller-provided
-arrays/objects are never mutated.
+Behavioural fix in this rewrite: `superimpose` no longer corrupts data when a
+`delete` transaction targets an id that is not present in the client data (the
+original removed the wrong element). Internals are now immutable — stored arrays and
+caller-provided arrays/objects are never mutated.
 
 ## License
 

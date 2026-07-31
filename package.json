@@ -1,6 +1,6 @@
 {
-  "name": "sequence-transactor",
-  "version": "3.0.0",
+  "name": "transactor-ts",
+  "version": "1.0.0",
   "description": "Track client-side transactional changes to data — undo/redo, edge dedup, superimpose, and batched saves. Typed and immutable.",
   "type": "module",
   "license": "BSD-3-Clause",
